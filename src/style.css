@@ -1,2 +1,182 @@
 
 
+:root{
+    --bg:#0f1221;
+    --body-bg: #0b0f1d;
+    --panel:#14182b;
+    --muted:#8b93a7;
+    --txt:#e9ecf1;
+    --brand:#7dd3fc;
+    --brand-2:#60a5fa;
+    --ok:#22c55e;
+    --warn:#ea3d08;
+    --err:#ef4444;
+    --radius:18px; 
+    --gap:14px;
+}
+
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:var(--txt);
+}
+
+html, body{
+    height:100%;
+    background:var(--body-bg);
+}
+
+body{
+    display:flex;
+    flex-direction:column;
+}
+
+header{
+    background:var(--panel);
+    padding:var(--gap);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+header .top-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:var(--gap);
+}
+
+
+header .top-bar .title{
+    font-size:1.4rem;
+    font-weight:600;
+}
+
+header .row{
+    display:flex;
+    gap:var(--gap);
+}
+
+.container{
+    flex:1;
+    display:flex;
+    gap:var(--gap);
+    padding:var(--gap);
+}
+
+.btn{
+    background:var(--brand);
+    border:none;
+    padding:10px 16px;
+    border-radius:var(--radius);
+    cursor:pointer;
+    font-weight:600;
+    transition:background 0.2s;
+}
+
+.btn:hover{
+    background:var(--brand-2);
+}
+
+.btn.secondary{
+    background:var(--panel);
+    border:2px solid var(--brand);
+}
+
+.btn.secondary:hover{
+    background:var(--brand);
+    color:var(--body-bg);
+}
+
+textarea{
+    flex:1;
+    background:var(--panel);
+    border:none;
+    border-radius:var(--radius);
+    padding:var(--gap);
+    font-family: 'Fira Code', monospace;
+    font-size:1rem;
+    color:var(--txt);
+    resize:none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+
+textarea:focus{
+    outline:none;
+    box-shadow: 0 0 0 3px var(--brand);
+}
+
+.output{
+    flex:1;
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:var(--gap);
+    font-family: 'Fira Code', monospace;
+    font-size:1rem;
+    color:var(--txt);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    overflow-y:auto;
+}
+
+.output .line{
+    margin-bottom:8px;
+}
+
+.output .line.ok{
+    color:var(--ok);
+}
+
+.output .line.warn{
+    color:var(--warn);
+}
+
+.output .line.err{
+    color:var(--err);
+}
+
+.output .line .prefix{
+    font-weight:600;
+    margin-right:8px;
+}
+
+.brand{
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    font-weight: 700;
+}
+
+.brand .dot{
+    width: 16px;
+    height: 16px;
+    background: var(--brand);
+    border-radius: 50%;
+}
+
+.brand .logo{
+     inline-size: 80px;
+    block-size: 50px;
+    border-radius: 10px;
+
+  /* one-shot shorthand prevents other background props from overriding */
+  background: url("public/logo.svg")
+              center / cover no-repeat;
+}
+
+.footer{
+    text-align:center;
+    padding:var(--gap);
+    font-size:0.9rem;
+    color:var(--muted);
+}
+
+.title{
+    font-size: clamp(18px, 2vw, 22px)
+};
+
+@media (max-width: 768px) {
+    .container{
+        flex-direction: column;
+    }
+}
