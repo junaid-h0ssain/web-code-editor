@@ -111,7 +111,7 @@ h3{ font-size: 0.9rem; color: var(--muted); }
     inline-size: 32px;
     block-size: 32px;
     border-radius: 6px;
-    background: url("/public/logo.svg") center / contain no-repeat, 
+    background: url("/logo.svg") center / contain no-repeat, 
                 linear-gradient(135deg, var(--brand), var(--brand-2));
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
 }

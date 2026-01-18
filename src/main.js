@@ -1,8 +1,8 @@
 import './style.css'
 
 
-const $ = selector => document.querySelector(selector);
-const $$ = selector => Array.from(document.querySelectorAll(selector));
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
 
 const out = $('#output');
 const preview = $('#preview');
@@ -55,12 +55,14 @@ const escapeHtml = s =>
 
 function log(message, type='info') {
 
+    // const color = type==='error' ? 'var(--err)' : type==='warn' ? 'var(--warn)' : 'var(--brand)';
+
     const time = new Date().toLocaleTimeString();
-  const p = document.createElement('p');
-  p.className = type;
-  p.innerHTML = `[${time}] ${escapeHtml(message)}`;
-  out.appendChild(p);
-  out.scrollTop = out.scrollHeight;
+    const p = document.createElement('div');
+    p.className = type;
+    p.innerHTML = `[${time}] ${escapeHtml(message)}`;
+    out.appendChild(p);
+    out.scrollTop = out.scrollHeight;
 }
 
 function clearLog() {
@@ -69,3 +71,30 @@ function clearLog() {
 
 
 $('#clearOut')?.addEventListener('click', clearLog);
+
+function makeEditor(id, mode) {
+  const ed = ace.edit(id, {
+    theme: "ace/theme/monokai",
+    mode: `ace/mode/${mode}`,
+    autoScrollEditorIntoView: true,
+    maxLines: Infinity,
+    tabSize: 2,
+    useSoftTabs: true,
+    showPrintMargin: false,
+    wrap: true
+  });
+  ed.session.setUseWorker(false);
+  return ed;
+}
+
+if (window.ace?.config) {
+  window.ace.config.set(
+    'basePath',
+    'https://cdn.jsdelivr.net/npm/ace-builds@1.32.0/src-min-noconflict'
+  );
+}
+
+const htmlEditor = makeEditor('htmlEditor', 'html');
+const cssEditor = makeEditor('cssEditor', 'css');
+const jsEditor = makeEditor('jsEditor', 'javascript');
+
