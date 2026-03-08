@@ -256,6 +256,14 @@ textarea:focus{
     color: var(--txt);
 }
 
+.editor *,
+.editor .ace_content,
+.editor .ace_text-layer,
+.editor .ace_cursor-layer,
+.editor .ace_gutter {
+    font-family: 'JetBrains Mono', monospace !important;
+}
+
 .preview{
     width: 100%;
     min-height: 260px;
