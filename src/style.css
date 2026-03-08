@@ -254,7 +254,6 @@ textarea:focus{
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.9rem;
     color: var(--txt);
-    padding: 12px;
 }
 
 .preview{

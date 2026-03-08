@@ -96,6 +96,8 @@ function makeEditor(id, mode) {
     showPrintMargin: false,
     wrap: true
   });
+  ed.renderer.setScrollMargin(8, 8);
+  ed.renderer.setPadding(12);
   ed.session.setUseWorker(false);
   return ed;
 }
