@@ -241,6 +241,23 @@ window.addEventListener('resize', () => {
   Object.values(editors).forEach(ed => ed.resize(true));
 });
 
+// Ctrl+Enter to run preview in Ace editors
+Object.values(editors).forEach(ed => {
+  ed.commands.addCommand({
+    name: 'runPreview',
+    bindKey: { win: 'Ctrl-Enter', mac: 'Cmd-Enter' },
+    exec: runPreview
+  });
+});
+
+// Ctrl+Enter globally (e.g. from notes textarea)
+document.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+    e.preventDefault();
+    runPreview();
+  }
+});
+
 restoreState();
 setActiveTab('html');
 runPreview();
